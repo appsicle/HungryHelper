@@ -37,7 +37,7 @@
                                 }
                             }).then(response => {
                             var info = response.body;
-                            var list = [info["title"], info["instructions"]];
+                            var list = [info["title"], info["instructions"], info["extendedIngredients"]];
                             // this.instructions.push(list);
                             this.$emit('passed', list)
                         })
