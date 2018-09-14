@@ -10,11 +10,11 @@
     export default {
         data(){
             return{
-                // instructions: []
             }
         },
         methods: {
             getRecipe(){
+                this.$emit('clear');
                 this.$http.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients=apples%2Cflour%2Csugar&limitLicense=false&number=2&ranking=1",
                     {
                         headers: {
@@ -38,7 +38,6 @@
                             }).then(response => {
                             var info = response.body;
                             var list = [info["title"], info["instructions"], info["extendedIngredients"]];
-                            // this.instructions.push(list);
                             this.$emit('passed', list)
                         })
                     }

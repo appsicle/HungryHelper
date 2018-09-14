@@ -1,6 +1,6 @@
 <template>
     <v-app light>
-        <Header @passed="setValue"></Header>
+        <Header @clear="clear" @passed="setValue"></Header>
         <v-container>
             <div v-for="item in instructions">
                 <p><strong>{{item[0]}}</strong> <br> Ingredients:
@@ -33,6 +33,9 @@
         methods: {
             setValue(value){
                 this.instructions.push(value);
+            },
+            clear(){
+                this.instructions = []
             }
         }
 
