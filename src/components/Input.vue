@@ -4,13 +4,13 @@
             <v-flex xs6>
                 <v-textarea
                         name="title"
-                        label="WHATS IN YOUR FRIDGE?"
+                        label="What's in your fridge?"
                         hint="ex: carrots pork lemon rice corn"
                         v-model="query"
                 ></v-textarea>
             </v-flex>
         </form>
-        <v-btn to="/recipes" flat color="success" @click="getRecipe">Submit</v-btn>
+        <v-btn slot="activator" to="/recipes" color="info" @click="getRecipe">Submit</v-btn>
         <p>{{query}}</p>
     </div>
 </template>
@@ -25,7 +25,7 @@
         methods: {
             getRecipe() {
                 this.$store.commit('reset')
-                this.$http.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients=apples%2Cflour%2Csugar&limitLicense=false&number=2&ranking=1",
+                this.$http.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?ingredients=apples%2Cflour%2Csugar&number=20&ranking=1",
                     {
                         headers: {
                             "X-Mashape-Key": "1YEwePZsOkmshgRlK83kandA6m0Rp1Qv3qJjsn3MHTKj6twMXE",
@@ -59,11 +59,3 @@
     }
 </script>
 
-<style scoped>
-    #input-usage .v-input__prepend-outer,
-    #input-usage .v-input__append-outer,
-    #input-usage .v-input__slot,
-    #input-usage .v-messages {
-        border: 1px dashed rgba(0, 0, 0, .4);
-    }
-</style>
