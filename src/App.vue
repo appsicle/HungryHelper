@@ -1,29 +1,23 @@
 <template>
     <v-app light>
-        <Header @clear="clear" @passed="setValue"></Header>
         <v-container>
-            <div v-for="item in instructions">
-                <p><strong>{{item[0]}}</strong> <br> Ingredients:
-                <div v-for="ingredient in item[2]">
-                    <li>{{ingredient["originalString"]}}</li>
-                </div>
-                <br>
-                Instructions: <br> {{item[1]}} <br>
-                </p>
-            </div>
-
+            <Header></Header>
+            <Input></Input>
+            <Display></Display>
         </v-container>
-        <main>
-
-        </main>
     </v-app>
 </template>
 
 <script>
     import Header from './components/Header.vue'
+    import Input from './components/Input.vue'
+    import Display from './components/Display.vue'
+
     export default {
         components: {
-            Header
+            Header,
+            Input,
+            Display
         },
         data() {
             return {
@@ -31,10 +25,10 @@
             }
         },
         methods: {
-            setValue(value){
+            setValue(value) {
                 this.instructions.push(value);
             },
-            clear(){
+            clear() {
                 this.instructions = []
             }
         }
