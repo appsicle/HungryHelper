@@ -2,8 +2,7 @@
     <v-app light>
         <v-container>
             <Header></Header>
-            <Input></Input>
-            <Display></Display>
+            <router-view></router-view>
         </v-container>
     </v-app>
 </template>

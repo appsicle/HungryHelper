@@ -4,6 +4,9 @@ import App from './App.vue'
 import VueResource from 'vue-resource'
 import Vuex from 'vuex'
 import store from './store'
+import Router from 'vue-router';
+import {routes} from './routes';
+
 import {
     Vuetify, // required
     VApp, // required
@@ -45,7 +48,14 @@ Vue.use(Vuetify, {
 
 Vue.use(VueResource);
 
+
+const router = new Router({
+    mode: 'history',
+    routes
+});
+
 new Vue({
     store,
+    router,
     render: h => h(App)
 }).$mount('#app')

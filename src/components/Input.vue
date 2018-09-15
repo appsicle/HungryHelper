@@ -10,7 +10,7 @@
                 ></v-textarea>
             </v-flex>
         </form>
-        <v-btn flat color="success" @click="getRecipe">Submit</v-btn>
+        <v-btn to="/recipes" flat color="success" @click="getRecipe">Submit</v-btn>
         <p>{{query}}</p>
     </div>
 </template>
