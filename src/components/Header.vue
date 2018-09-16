@@ -1,6 +1,6 @@
 <template>
 
-    <v-toolbar>
+    <v-toolbar class="app-header">
         <v-toolbar-side-icon></v-toolbar-side-icon>
         <v-toolbar-title>Recipe Master</v-toolbar-title>
         <v-spacer></v-spacer>

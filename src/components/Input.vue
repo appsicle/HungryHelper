@@ -10,7 +10,10 @@
                 ></v-textarea>
             </v-flex>
         </form>
-        <v-btn slot="activator" to="/recipes" color="info" @click="getRecipe">Submit</v-btn>
+        <v-btn  slot="activator"
+                to="/recipes"
+                color="info"
+                @click="getRecipe">Submit</v-btn>
         <p>{{query}}</p>
     </div>
 </template>
@@ -25,18 +28,16 @@
         methods: {
             getRecipe() {
 
-                var user_input = this.query.replace(/,/g, "").replace(/\n/g," ").split(" ");
-                console.log(user_input)
+                // parse data
+                var user_input = this.query.replace(/,/g, "").replace(/\n/g, " ").split(" ");
                 var ingredients_string = user_input[0];
-                for (var i = 1; i < user_input.length; i++){
+                for (var i = 1; i < user_input.length; i++) {
                     ingredients_string += ("%2C" + user_input[i])
                 }
-                console.log(ingredients_string)
 
-
-
+                // connect to api
                 this.$store.commit('reset')
-                this.$http.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?ingredients="+ingredients_string+"&number=10&ranking=1",
+                this.$http.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?ingredients=" + ingredients_string + "&number=10&ranking=1",
                     {
                         headers: {
                             "X-Mashape-Key": "1YEwePZsOkmshgRlK83kandA6m0Rp1Qv3qJjsn3MHTKj6twMXE",
@@ -57,6 +58,8 @@
                                     "Accept": "application/json"
                                 }
                             }).then(response => {
+
+                            // send important data to state management
                             var info = response.body;
                             var list = [info["title"], info["instructions"], info["extendedIngredients"], info["image"]];
                             this.$store.commit('setRecipeList', list);
@@ -69,4 +72,6 @@
         }
     }
 </script>
+
+
 
