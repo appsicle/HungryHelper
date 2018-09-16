@@ -1,7 +1,6 @@
 <template>
     <v-app light>
         <v-container>
-            <Header></Header>
             <transition name="fade" mode="out-in">
                 <router-view></router-view>
             </transition>

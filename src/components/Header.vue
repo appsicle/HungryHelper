@@ -1,11 +1,16 @@
 <template>
+    <div>
+        <h3 class="display-3">Hungry Helper</h3>
 
-    <v-toolbar class="app-header">
-        <v-toolbar-side-icon></v-toolbar-side-icon>
-        <v-toolbar-title>Recipe Master</v-toolbar-title>
-        <v-spacer></v-spacer>
+        <p class="subheading">
+            According to the United Nations, approximately 1.3 billion tons of food produced each year goes
+            to waste.<br>
+            As a result, 815 million people go hungry each year.
+        </p>
+        <!--<v-divider class="my-3"></v-divider>-->
 
-    </v-toolbar>
+        <div class="font-weight-regular">Eliminate food waste one ingredient at a time...</div>
+    </div>
 </template>
 
 <script>
@@ -13,8 +18,6 @@
         data() {
             return {}
         },
-        methods: {
-
-        }
+        methods: {}
     }
 </script>

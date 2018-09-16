@@ -3,7 +3,7 @@
         <div class="text-xs-center">
 
         </div>
-        <v-expansion-panel class="app-expansion">
+        <v-expansion-panel class="app-expansion" mode="out-in">
             <div>
                 <v-btn class="search-again"
                        to="/" color="info">Search Again
@@ -18,7 +18,12 @@
                     <li class="app-list-item">{{ingredient['originalString']}}</li>
                 </ul>
                 <v-card-text>{{item[1]}}</v-card-text>
-                <img :src="item[3]">
+                <v-card-media
+                        contain
+                        aspect-ratio="1.8"
+                        max-height="250px"
+                        :src="item[3]"></v-card-media>
+
             </v-expansion-panel-content>
         </v-expansion-panel>
 
@@ -39,11 +44,14 @@
 
 
 <style scoped>
+    .opened {
+        padding-bottom: 30px;
+    }
+
     .app-expansion {
         margin-top: 30px;
     }
 
-    ,
     .app-list-header {
         margin-left: 25px;
     }

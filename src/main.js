@@ -15,13 +15,15 @@ import {
     VTextarea,
     VGrid,
     VToolbar,
+    VTextField,
+    VJumbotron,
+    VDivider,
     VBtn,
     VInput,
     VExpansionPanel,
     VCard,
     transitions
 } from 'vuetify'
-
 
 
 Vue.config.productionTip = false
@@ -32,12 +34,15 @@ Vue.use(Vuex);
 Vue.use(Vuetify, {
     components: {
         VApp,
+        VJumbotron,
+        VDivider,
         VGrid,
         VNavigationDrawer,
         VFooter,
         VToolbar,
         VTextarea,
         VExpansionPanel,
+        VTextField,
         VCard,
         VBtn,
         VInput,

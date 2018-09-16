@@ -1,25 +1,42 @@
 <template>
-    <div>
-        <form action="">
-            <v-flex xs6>
-                <v-textarea
-                        name="title"
-                        label="What's in your fridge?"
-                        hint="ex: carrots pork lemon rice corn"
-                        v-model="query"
-                ></v-textarea>
-            </v-flex>
-        </form>
-        <v-btn  slot="activator"
-                to="/recipes"
-                color="info"
-                @click="getRecipe">Submit</v-btn>
-        <p>{{query}}</p>
-    </div>
-</template>
-<script>
-    export default {
+    <v-jumbotron>
+        <v-container fill-height>
+            <v-layout align-center>
+                <v-flex>
+                    <Header/>
 
+                    <v-layout align-center>
+                        <v-flex>
+                            <form v-on:submit.prevent>
+                                <v-text-field auto-grow
+                                              label="What's in your fridge?"
+                                              hint="ex: carrots pork lemon rice corn"
+                                              v-model="query"
+                                ></v-text-field>
+                            </form>
+                            <div class="text-xs-center">
+                                <v-btn
+                                        slot="activator"
+                                        to="/recipes"
+                                        color="info"
+                                        @click="getRecipe">Submit
+                                </v-btn>
+                            </div>
+                        </v-flex>
+                    </v-layout>
+                </v-flex>
+            </v-layout>
+        </v-container>
+    </v-jumbotron>
+</template>
+
+<script>
+    import Header from './Header.vue'
+
+    export default {
+        components: {
+            Header
+        },
         data() {
             return {
                 query: ''
