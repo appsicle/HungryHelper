@@ -24,8 +24,19 @@
         },
         methods: {
             getRecipe() {
+
+                var user_input = this.query.replace(/,/g, "").replace(/\n/g," ").split(" ");
+                console.log(user_input)
+                var ingredients_string = user_input[0];
+                for (var i = 1; i < user_input.length; i++){
+                    ingredients_string += ("%2C" + user_input[i])
+                }
+                console.log(ingredients_string)
+
+
+
                 this.$store.commit('reset')
-                this.$http.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?ingredients=apples%2Cflour%2Csugar&number=20&ranking=1",
+                this.$http.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?ingredients="+ingredients_string+"&number=10&ranking=1",
                     {
                         headers: {
                             "X-Mashape-Key": "1YEwePZsOkmshgRlK83kandA6m0Rp1Qv3qJjsn3MHTKj6twMXE",
@@ -47,7 +58,7 @@
                                 }
                             }).then(response => {
                             var info = response.body;
-                            var list = [info["title"], info["instructions"], info["extendedIngredients"]];
+                            var list = [info["title"], info["instructions"], info["extendedIngredients"], info["image"]];
                             this.$store.commit('setRecipeList', list);
                         })
                     }

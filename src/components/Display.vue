@@ -6,14 +6,14 @@
         <v-expansion-panel>
             <v-expansion-panel-content
                     v-for="item in instructions"
-                    :key="item"
+
             >
                 <div slot="header">{{item[0]}}</div>
-                <ul class="app-list-header" v-for="ingredient in item[2]" :key="ingredient">
+                <ul class="app-list-header" v-for="ingredient in item[2]">
                     <li class="app-list-item">{{ingredient['originalString']}}</li>
                 </ul>
                 <v-card-text>{{item[1]}}</v-card-text>
-
+                <img :src="item[3]">
             </v-expansion-panel-content>
         </v-expansion-panel>
 
