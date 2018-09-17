@@ -10,16 +10,18 @@
                             <form v-on:submit.prevent>
                                 <v-text-field auto-grow
                                               label="What's in your fridge?"
-                                              hint="ex: carrots pork lemon rice corn"
+                                              hint="ex: carrots pork lemon corn"
                                               v-model="query"
+                                              @keydown.enter="pressedEnter"
+
                                 ></v-text-field>
                             </form>
                             <div class="text-xs-center">
                                 <v-btn
                                         slot="activator"
                                         to="/recipes"
-                                        color="info"
-                                        @click="getRecipe">Submit
+                                        color="brown"
+                                        @click="getRecipe" style="color:white;font-weight:bold;">Find Recipes
                                 </v-btn>
                             </div>
                         </v-flex>
@@ -43,6 +45,11 @@
             }
         },
         methods: {
+            pressedEnter(){
+                console.log('tst');
+                this.$router.push({path: '/recipes'});
+                this.getRecipe();
+            },
             getRecipe() {
 
                 // parse data
@@ -54,7 +61,7 @@
 
                 // connect to api
                 this.$store.commit('reset')
-                this.$http.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?ingredients=" + ingredients_string + "&number=10&ranking=1",
+                this.$http.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?ingredients=" + ingredients_string + "&number=15&ranking=1",
                     {
                         headers: {
                             "X-Mashape-Key": "1YEwePZsOkmshgRlK83kandA6m0Rp1Qv3qJjsn3MHTKj6twMXE",
@@ -78,8 +85,13 @@
 
                             // send important data to state management
                             var info = response.body;
-                            var list = [info["title"], info["instructions"], info["extendedIngredients"], info["image"]];
-                            this.$store.commit('setRecipeList', list);
+                            console.log(info["instructions"])
+                            if (info["instructions"] != null && info["instructions"] != "Instructions") {
+                                var list = [info["title"], info["instructions"], info["extendedIngredients"], info["image"]];
+                                this.$store.commit('setRecipeList', list);
+                            }
+
+
                         })
                     }
 

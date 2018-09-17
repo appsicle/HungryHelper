@@ -6,18 +6,22 @@
         <v-expansion-panel class="app-expansion" mode="out-in">
             <div>
                 <v-btn class="search-again"
-                       to="/" color="info">Search Again
+                       to="/" color="brown"
+                       style="color:white;font-weight:bold;">Search Again
                 </v-btn>
             </div>
             <v-expansion-panel-content
                     v-for="item in instructions"
 
             >
-                <div slot="header">{{item[0]}}</div>
+                <div class="dish-title" slot="header">{{item[0]}}</div>
+                <v-card-text class="card-header">INGREDIENTS</v-card-text>
                 <ul class="app-list-header" v-for="ingredient in item[2]">
                     <li class="app-list-item">{{ingredient['originalString']}}</li>
                 </ul>
-                <v-card-text>{{item[1]}}</v-card-text>
+                <br>
+                <v-card-text class="card-header">DIRECTIONS</v-card-text>
+                <v-card-text class="directions-paragraph">{{item[1]}}</v-card-text>
                 <v-card-media
                         contain
                         aspect-ratio="1.8"
@@ -44,9 +48,6 @@
 
 
 <style scoped>
-    .opened {
-        padding-bottom: 30px;
-    }
 
     .app-expansion {
         margin-top: 30px;
@@ -62,5 +63,28 @@
 
     .search-again {
         margin: 15px;
+    }
+
+    .card-header {
+        padding-top: 2px;
+        font-weight: bold;
+        font-size: 15px;
+        padding-bottom: 0px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .directions-paragraph {
+        padding-top: 5px;
+        margin-left: 10px;
+        margin-right: 10px;
+
+    }
+
+    .dish-title {
+        font-weight: bold;
+        font-size: 18px;
+        padding: 7px;
+        margin-left: -5px;
     }
 </style>
