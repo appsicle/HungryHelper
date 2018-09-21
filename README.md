@@ -1,3 +1,3 @@
 # Hungry Helper
 
-## Displays different cooking recipes that can be made based on queried ingredients
+Displays different cooking recipes that can be made based on queried ingredients
