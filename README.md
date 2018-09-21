@@ -1,23 +1,3 @@
 # Hungry Helper
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-Testing a commit!
+## Displays different cooking recipes that can be made based on queried ingredients
